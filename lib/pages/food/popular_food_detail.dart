@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/app_column.dart';
 import 'package:food_delivery/widgets/app_icon.dart';
+import 'package:food_delivery/widgets/exandable_text_widget.dart';
 
 import '../../utils/colors.dart';
 import '../../widgets/big_text.dart';
-import '../../widgets/icon_and_text_widget.dart';
-import '../../widgets/small_text.dart';
 
 class PopularFoodDetail extends StatelessWidget {
   const PopularFoodDetail({super.key});
@@ -16,8 +15,10 @@ class PopularFoodDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
+          //background image
           Positioned(
             left: 0,
               right: 0,
@@ -32,6 +33,7 @@ class PopularFoodDetail extends StatelessWidget {
                   )
                 ),
           )),
+          //icon widget
           Positioned(
                top: Dimensions.height45,
               left: Dimensions.width20,
@@ -43,6 +45,7 @@ class PopularFoodDetail extends StatelessWidget {
                         AppIcon(icon: Icons.shopping_cart_outlined),
                     ],
               )),
+          //introdution of food
           Positioned(
             left: 0,
               right: 0,
@@ -57,9 +60,63 @@ class PopularFoodDetail extends StatelessWidget {
                   ),
                   color: Colors.white,
                 ),
-                child:AppColumn(),
-              ))
+                child:Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppColumn(text: "Chinese Side"),
+                    SizedBox(height: Dimensions.height20,),
+                    BigText(text: "Introduce"),
+                    SizedBox(height: Dimensions.height20,),
+                    Expanded(child: SingleChildScrollView(child: ExpandableTextWidget(text: "Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with fried onions (cheeky easy sub below!), fresh coriander/cilantro, then partially cooked basmati rice. \n A drizzle of saffron milk and a sprinkle of garam masala bring it all together before sealing the pot and letting the flavors infuse over low heat. \n This traditional biryani method creates a fragrant and deliciously rich one-pot meal. \n Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with fried onions (cheeky easy sub below!), fresh coriander/cilantro, then partially cooked basmati rice. \nA drizzle of saffron milk and a sprinkle of garam masala bring it all together before sealing the pot and letting the flavors infuse over low heat.")),
+                    )
+                  ],
+                ),
+              )
+          ),
         ],
+      ),
+      bottomNavigationBar: Container(
+        height: Dimensions.bottomHeightBar,
+        padding: EdgeInsets.only(top: Dimensions.height30,bottom: Dimensions.height30,left: Dimensions.width20, right: Dimensions.width20),
+        decoration: BoxDecoration(
+          color: AppColors.buttonBackgroundColor,
+          borderRadius: BorderRadius.only(
+
+            topLeft: Radius.circular(Dimensions.radius20*2),
+            topRight: Radius.circular(Dimensions.radius20*2),
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              padding: EdgeInsets.only(top: Dimensions.height10,bottom: Dimensions.height10,left: Dimensions.width20,right: Dimensions.width20),//dar f top o l bottom width20
+
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimensions.radius20),
+                color: Colors.white,
+              ),
+              child: Row(
+                children: [
+                  Icon(Icons.remove, color: AppColors.signColor,),
+                  SizedBox(width: Dimensions.width10/2,),
+                  BigText(text: "0"),
+                  SizedBox(width: Dimensions.width10/2,),
+                  Icon(Icons.add, color: AppColors.signColor,),
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: Dimensions.height10,bottom: Dimensions.height10,left: Dimensions.width20,right: Dimensions.width20),//dar f top o lbottom width20
+
+              child: BigText(text: "\$10 | Add to cart", color: Colors.white,),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimensions.radius20),
+                color: AppColors.mainColor,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
