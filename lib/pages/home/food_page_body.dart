@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/popular_product_controller.dart';
+import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/app_column.dart';
@@ -53,7 +54,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 controller: pageController,
                 itemCount: popularProducts.popularProductList.length,
                 itemBuilder: (context, position){
-                  return _buildPageItem(position);
+                  return _buildPageItem(position, popularProducts.popularProductList[position]);
                 }),
           );
        }),
@@ -165,7 +166,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       ],
     );
   }
-  Widget _buildPageItem(int index){
+  Widget _buildPageItem(int index, popularProduct){
     Matrix4 matrix = new Matrix4.identity();
     if(index==_currPageValue.floor()){
       var currScale = 1-(_currPageValue-index)*(1-_scaleFactor);
@@ -200,8 +201,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 color: index.isEven?Color(0xFF69c5df) : Color(0xFF9294cc),
                 image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage(
-                        "assets/image/food0.png"
+                    image: NetworkImage(
+                        AppConstants.BASE_URL+"/uploads/"+popularProduct.img!
                     )
                 )
             ),
@@ -232,7 +233,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               ),
               child: Container(
                 padding: EdgeInsets.only(top: Dimensions.height15, left: 15 , right: 15),
-                child: AppColumn(text: "Chinese Side"),
+                child: AppColumn(text: popularProduct.name!),
               ),
             ),
           ),
