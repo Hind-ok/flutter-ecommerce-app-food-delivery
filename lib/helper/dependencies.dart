@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 import '../controllers/popular_product_controller.dart';
 Future<void> init() async {
   // API Client
-  Get.lazyPut(() => ApiClient(appBaseUrl: "https://www.dbestech.com"));
+  Get.lazyPut(() => ApiClient(appBaseUrl: "http://mvs.bslmeiyu.com"));
 
   // Repositories
-  Get.lazyPut(() => PopularProductRepo(apiClient: Get.find()));
+  Get.lazyPut(() => PopularProductRepo(apiClient:Get.find()));
 
   // Controllers
-  Get.lazyPut(() => PopularProductController(popularProductRepo: Get.find()));
+  Get.lazyPut(() => PopularProductController(popularProductRepo:Get.find()));
 }
