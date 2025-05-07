@@ -80,7 +80,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              BigText(text: "Popular"),
+              BigText(text: "Recommended"),
               SizedBox(width: Dimensions.width10,),
               Container(
                 margin: const EdgeInsets.only(bottom: 3),
@@ -88,7 +88,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               ),
               SizedBox(width: Dimensions.width10,),
               Container(
-                margin: const EdgeInsets.only(bottom: 2), //hwa dar 2
+                margin: const EdgeInsets.only(bottom: 6), //hwa dar 2
                 child: SmallText(text: "Food pairing"),
               )
             ],
