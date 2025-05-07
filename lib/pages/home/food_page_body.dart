@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/popular_product_controller.dart';
+import 'package:food_delivery/pages/food/popular_food_detail.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
@@ -52,12 +53,17 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           return  popularProducts.isLoaded?Container(
             //color: Colors.red ,
             height: Dimensions.pageView ,
-            child: PageView.builder(
-                controller: pageController,
-                itemCount: popularProducts.popularProductList.length,
-                itemBuilder: (context, position){
-                  return _buildPageItem(position, popularProducts.popularProductList[position]);
-                }),
+            child: GestureDetector(
+              onTap: (){
+                Get.to(()=> PopularFoodDetail());
+              },
+              child: PageView.builder(
+                  controller: pageController,
+                  itemCount: popularProducts.popularProductList.length,
+                  itemBuilder: (context, position){
+                    return _buildPageItem(position, popularProducts.popularProductList[position]);
+                  }),
+            ),
           ):CircularProgressIndicator(
             color:AppColors.mainColor,
           );
@@ -140,7 +146,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              BigText(text: "Nutritions fruits meal in China"),
+                              BigText(text: recommendedProduct.recommendedProductList[index].name!),
                               SizedBox(height: Dimensions.height10,),
                               SmallText(text: "With chinese characteristics"),
                               SizedBox(height: Dimensions.height10,),
