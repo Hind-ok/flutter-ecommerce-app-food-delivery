@@ -47,7 +47,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       children: [
         //slider Section
        GetBuilder<PopularProductController>(builder: (popularProducts){
-          return  Container(
+          return  popularProducts.isLoaded?Container(
             //color: Colors.red ,
             height: Dimensions.pageView ,
             child: PageView.builder(
@@ -56,11 +56,13 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 itemBuilder: (context, position){
                   return _buildPageItem(position, popularProducts.popularProductList[position]);
                 }),
+          ):CircularProgressIndicator(
+            color:AppColors.mainColor,
           );
        }),
         //dots
-    GetBuilder<PopularProductController>(builder: (popularProducts){
-      return  DotsIndicator(
+       GetBuilder<PopularProductController>(builder: (popularProducts){
+         return  DotsIndicator(
         dotsCount: popularProducts.popularProductList.isEmpty?1:popularProducts.popularProductList.length,
         position: _currPageValue,
         decorator: DotsDecorator(
