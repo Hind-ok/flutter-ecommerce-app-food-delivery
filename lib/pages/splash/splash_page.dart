@@ -6,6 +6,9 @@ import 'package:food_delivery/routes/route_helper.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../../controllers/popular_product_controller.dart';
+import '../../controllers/recommended_product_controller.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -18,9 +21,15 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   late Animation<double> animation;
   late AnimationController controller;
 
+  Future<void> _loadResources() async {
+        await Get.find<PopularProductController>().getPopularProductList();
+        await Get.find<RecommendedProductController>().getRecommendedProductList();
+}
+
   @override
   void initState(){
    super.initState();
+   _loadResources();
    controller = new AnimationController(
        vsync: this,
        duration: const Duration(seconds: 2))..forward();
@@ -29,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
        curve: Curves.linear);
 
    Timer(
-     const Duration(seconds: 3),
+     const Duration(seconds: 5),
        ()=>Get.offNamed(RouteHelper.getInitial()),
    );
   }
