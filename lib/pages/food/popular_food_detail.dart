@@ -12,14 +12,14 @@ import 'package:food_delivery/widgets/app_icon.dart';
 import 'package:food_delivery/widgets/exandable_text_widget.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-
 import '../../utils/colors.dart';
 import '../../widgets/big_text.dart';
 
 
 class PopularFoodDetail extends StatelessWidget {
    int pageId;
-   PopularFoodDetail({super.key,required this.pageId});
+   final String page;
+   PopularFoodDetail({super.key,required this.pageId, required this.page});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +55,12 @@ class PopularFoodDetail extends StatelessWidget {
                     children: [
                         GestureDetector(
                           onTap:(){
-                            Get.to(()=>MainFoodPage());
+
+                            if(page == "cartpage"){
+                              Get.toNamed(RouteHelper.getCartPage());
+                            }else{
+                              Get.toNamed(RouteHelper.getInitial());
+                            }
                                   },
                             child:
                             AppIcon(icon: Icons.arrow_back_ios)
