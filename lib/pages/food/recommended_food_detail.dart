@@ -1,5 +1,6 @@
  import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/controllers/popular_product_controller.dart';
 import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
@@ -80,72 +81,80 @@ class RecommendedFoodDetail extends StatelessWidget {
        ),
 
 
-       bottomNavigationBar: Column(
-          mainAxisSize: MainAxisSize.min,
-         children: [
-           Container(
-             padding: EdgeInsets.only(
-               left: Dimensions.width20*2.5,
-               right: Dimensions.width20*2.5,
-               top:Dimensions.height10 ,
-               bottom: Dimensions.height10,
-             ),
-             child: Row(
-               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-               children: [
-                 AppIcon(
-                     iconSize: Dimensions.iconSize24,
-                     iconColor:Colors.white,
-                     backgroundColor:AppColors.mainColor,
-                     icon: Icons.remove),
-                 BigText(text: "\$ ${product.price!} X  0 ", color: AppColors.mainBlackColor,size: Dimensions.font26,),
-                 AppIcon(
-                     iconSize: Dimensions.iconSize24,
-                     iconColor:Colors.white,
-                     backgroundColor:AppColors.mainColor,
-                     icon: Icons.add),             ],
-             ),
-           ),
-           Container(
-             height: Dimensions.bottomHeightBar,
-             padding: EdgeInsets.only(top: Dimensions.height30,bottom: Dimensions.height30,left: Dimensions.width20, right: Dimensions.width20),
-             decoration: BoxDecoration(
-               color: AppColors.buttonBackgroundColor,
-               borderRadius: BorderRadius.only(
-
-                 topLeft: Radius.circular(Dimensions.radius20*2),
-                 topRight: Radius.circular(Dimensions.radius20*2),
+       bottomNavigationBar: GetBuilder<PopularProductController>(builder:(controller){
+         return Column(
+           mainAxisSize: MainAxisSize.min,
+           children: [
+             Container(
+               padding: EdgeInsets.only(
+                 left: Dimensions.width20*2.5,
+                 right: Dimensions.width20*2.5,
+                 top:Dimensions.height10 ,
+                 bottom: Dimensions.height10,
+               ),
+               child: Row(
+                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                 children: [
+                   AppIcon(
+                       iconSize: Dimensions.iconSize24,
+                       iconColor:Colors.white,
+                       backgroundColor:AppColors.mainColor,
+                       icon: Icons.remove),
+                   BigText(text: "\$ ${product.price!} X  0 ", color: AppColors.mainBlackColor,size: Dimensions.font26,),
+                   GestureDetector(
+                     onTap: (){
+                      controller.setQuantity(true);
+                     },
+                     child: AppIcon(
+                         iconSize: Dimensions.iconSize24,
+                         iconColor:Colors.white,
+                         backgroundColor:AppColors.mainColor,
+                         icon: Icons.add),
+                   )
+                 ],
                ),
              ),
-             child: Row(
-               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-               children: [
-                 Container(
-                   padding: EdgeInsets.only(top: Dimensions.height20,bottom: Dimensions.height20,left: Dimensions.width20,right: Dimensions.width20),//dar f top o l bottom width20
+             Container(
+               height: Dimensions.bottomHeightBar,
+               padding: EdgeInsets.only(top: Dimensions.height30,bottom: Dimensions.height30,left: Dimensions.width20, right: Dimensions.width20),
+               decoration: BoxDecoration(
+                 color: AppColors.buttonBackgroundColor,
+                 borderRadius: BorderRadius.only(
 
-                   decoration: BoxDecoration(
-                     borderRadius: BorderRadius.circular(Dimensions.radius20),
-                     color: Colors.white,
-                   ),
-                   child: Icon(
-                     Icons.favorite,
-                     color: AppColors.mainColor,
-                   ),
+                   topLeft: Radius.circular(Dimensions.radius20*2),
+                   topRight: Radius.circular(Dimensions.radius20*2),
                  ),
-                 Container(
-                   padding: EdgeInsets.only(top: Dimensions.height10,bottom: Dimensions.height10,left: Dimensions.width20,right: Dimensions.width20),//dar f top o lbottom width20
+               ),
+               child: Row(
+                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                 children: [
+                   Container(
+                     padding: EdgeInsets.only(top: Dimensions.height20,bottom: Dimensions.height20,left: Dimensions.width20,right: Dimensions.width20),//dar f top o l bottom width20
 
-                   child: BigText(text: "\$ ${product.price!} | Add to cart", color: Colors.white,),
-                   decoration: BoxDecoration(
-                     borderRadius: BorderRadius.circular(Dimensions.radius20),
-                     color: AppColors.mainColor,
+                     decoration: BoxDecoration(
+                       borderRadius: BorderRadius.circular(Dimensions.radius20),
+                       color: Colors.white,
+                     ),
+                     child: Icon(
+                       Icons.favorite,
+                       color: AppColors.mainColor,
+                     ),
                    ),
-                 ),
-               ],
+                   Container(
+                     padding: EdgeInsets.only(top: Dimensions.height10,bottom: Dimensions.height10,left: Dimensions.width20,right: Dimensions.width20),//dar f top o lbottom width20
+
+                     child: BigText(text: "\$ ${product.price!} | Add to cart", color: Colors.white,),
+                     decoration: BoxDecoration(
+                       borderRadius: BorderRadius.circular(Dimensions.radius20),
+                       color: AppColors.mainColor,
+                     ),
+                   ),
+                 ],
+               ),
              ),
-           ),
-         ],
-       ),
+           ],
+         );
+       }),
      );
    }
  }
