@@ -7,11 +7,13 @@ import '../pages/cart/cart_page.dart';
 
 
 class RouteHelper{
+  static const String splashPage="/splash-page";
   static const String initial="/";
   static const String popularFood="/popular-food";
   static const String recommendedFood="/recommended-food";
   static const String cartPage="/cart-page";
 
+  static String getSplashPage()=>'$splashPage';
   static String getInitial()=>'$initial';
   static String getPoularFood(int pageId, String page)=>'$popularFood?pageId=$pageId&page=$page';
   static String getRecommendedFood(int pageId, String page)=>'$recommendedFood?pageId=$pageId&page=$page';
