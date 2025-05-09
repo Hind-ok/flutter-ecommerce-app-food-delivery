@@ -44,4 +44,8 @@ class Dimensions{
 
   //bottom navigator height
   static double bottomHeightBar = screenHeight/7.03;
+
+  //splash sreen
+  static double splashImg = screenHeight/3.38;
+
 }

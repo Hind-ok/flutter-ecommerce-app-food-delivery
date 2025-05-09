@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/routes/route_helper.dart';
+import 'package:food_delivery/utils/dimensions.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
@@ -50,8 +51,10 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ScaleTransition(scale: animation,
-          child: Center(child:Image.asset("assets/image/logo part 1.png",width: 250,),)),
-          Center(child:Image.asset("assets/image/logo part 2.png",width: 250,),)
+          child: Center(child:Image.asset("assets/image/logo part 1.png",
+            width: Dimensions.splashImg,),)),
+          Center(child:Image.asset("assets/image/logo part 2.png",
+            width: Dimensions.splashImg,),)
 
         ],
       ) ,
