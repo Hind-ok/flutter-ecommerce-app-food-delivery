@@ -78,11 +78,11 @@ class PopularProductController extends GetxController {
     exist = _cart.existInCart(product);
     //
     //
-    print("exist"+exist.toString());
+    //print("exist"+exist.toString());
     if(exist){
       _inCartItems=_cart.getQuantity(product);
     }
-    print("the quantity in the cart is "+_inCartItems.toString());
+    //print("the quantity in the cart is "+_inCartItems.toString());
   }
 
   void addItem(ProductModel product){
