@@ -74,7 +74,7 @@ class CartHistory extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                BigText(text: "0/05/200021"),
+                                BigText(text: getCartHistoryList[listCounter].time!),
                                 SizedBox(height: Dimensions.height10,),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -102,6 +102,7 @@ class CartHistory extends StatelessWidget {
                                         })
                                     ),
                                     Container(
+
                                         height: 80,
                                       child: Column(
                                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
