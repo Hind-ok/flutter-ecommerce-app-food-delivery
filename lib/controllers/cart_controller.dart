@@ -128,4 +128,8 @@ update();
     update();
       }
 
+  List<CartModel> getCartHistoryList(){
+    return cartRepo.getCartHistoryList();
+  }
+
 }
