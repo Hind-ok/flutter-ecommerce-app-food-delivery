@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/base/show_custom_snackbar.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/app_text_field.dart';
@@ -29,7 +30,19 @@ class SignUpPage extends StatelessWidget {
       String password = passwordController.text.trim();
 
       if(name.isEmpty){
-
+        showCustomSnackBar("Type in your name", title: "Name");
+      }else if(phone.isEmpty){
+        showCustomSnackBar("Type in your phone number", title: "Phone");
+      }else if(email.isEmpty){
+        showCustomSnackBar("Type in your email adress", title: "Email adress");
+      }else if(!GetUtils.isEmail(email)){
+        showCustomSnackBar("Type in a valise email adress", title: "Valid email adress");
+      }else if (password.isEmpty){
+        showCustomSnackBar("Type in your password", title: "Password");
+      }else if(password.length<6){
+        showCustomSnackBar("Password can not be less than six characters", title: "Password");
+      }else{
+        showCustomSnackBar("All went well", title: "Perfect");
       }
     }
     return Scaffold(
