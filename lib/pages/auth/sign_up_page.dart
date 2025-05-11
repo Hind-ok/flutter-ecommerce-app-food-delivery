@@ -22,6 +22,16 @@ class SignUpPage extends StatelessWidget {
       "f.png",
       "g.png"
     ];
+    void _registration(){
+      String name = nameController.text.trim();
+      String phone = phoneController.text.trim();
+      String email = emailController.text.trim();
+      String password = passwordController.text.trim();
+
+      if(name.isEmpty){
+
+      }
+    }
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -63,18 +73,23 @@ class SignUpPage extends StatelessWidget {
                 icon: Icons.phone),
             SizedBox(height: Dimensions.height20+ Dimensions.height20,),
             //Sign up button
-            Container(
-              width: Dimensions.screenWidth/2,
-              height: Dimensions.screenHeight/13,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.radius30),
-                color: AppColors.mainColor,
-              ),
-              child: Center(
-                child: BigText(
-                    text: "Sign Up",
-                    size: Dimensions.font20 + Dimensions.font20/2,
-                    color: Colors.white,
+            GestureDetector(
+              onTap: (){
+                _registration();
+              },
+              child: Container(
+                width: Dimensions.screenWidth/2,
+                height: Dimensions.screenHeight/13,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimensions.radius30),
+                  color: AppColors.mainColor,
+                ),
+                child: Center(
+                  child: BigText(
+                      text: "Sign Up",
+                      size: Dimensions.font20 + Dimensions.font20/2,
+                      color: Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -117,5 +132,7 @@ class SignUpPage extends StatelessWidget {
         ),
       ),
     );
+
+
   }
 }
