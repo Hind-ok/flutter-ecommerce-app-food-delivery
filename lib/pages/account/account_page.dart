@@ -90,11 +90,11 @@ class AccountPage extends StatelessWidget {
                    //message
                    AccountWidget(
                        appIcon:  AppIcon(icon: Icons.message_outlined,
-                         backgroundColor: Colors.redAccent,
+                         backgroundColor: Colors.red,
                          iconColor: Colors.white,
                          iconSize: Dimensions.height10*5/2,
                          size: Dimensions.height10*5,),
-                       bigText: BigText(text: "msg")
+                       bigText: BigText(text: "put your msg here")
                    ),
                  ],
                ),
