@@ -140,4 +140,8 @@ update();
     cartRepo.addToCartList(getItems);
     update();
   }
+  void clearCartHistory(){
+    cartRepo.clearCartHistory();
+    update();
+  }
 }

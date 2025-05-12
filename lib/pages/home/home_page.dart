@@ -5,6 +5,7 @@ import 'package:food_delivery/pages/cart/cart_history.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
 import 'package:food_delivery/utils/colors.dart';
 
+import '../auth/sign_in_page.dart';
 import '../auth/sign_up_page.dart';
 
 
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
 
   List pages=[
     MainFoodPage(),
-    SignUpPage(),
+    Container(child: Text("page og payment"),),
     CartHistory(),
     AccountPage(),
   ];
