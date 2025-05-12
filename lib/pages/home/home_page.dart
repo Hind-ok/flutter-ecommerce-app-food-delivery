@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/pages/account/account_page.dart';
 import 'package:food_delivery/pages/cart/cart_history.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
+import 'package:food_delivery/pages/payment_page.dart';
 import 'package:food_delivery/utils/colors.dart';
 
 import '../auth/sign_in_page.dart';
 import '../auth/sign_up_page.dart';
+import '../cart/cart_page.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -22,7 +24,7 @@ class _HomePageState extends State<HomePage> {
 
   List pages=[
     MainFoodPage(),
-    Container(child: Text("page og payment"),),
+    PaymentPage(),
     CartHistory(),
     AccountPage(),
   ];

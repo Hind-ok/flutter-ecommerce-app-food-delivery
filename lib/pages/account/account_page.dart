@@ -102,6 +102,7 @@ class AccountPage extends StatelessWidget {
                          Get.offNamed(RouteHelper.getSingInPage());
                        }else{
                          print("you logg out");
+                         Get.offNamed(RouteHelper.getSingInPage());
                        }
                      },
                      child: AccountWidget(
@@ -110,7 +111,7 @@ class AccountPage extends StatelessWidget {
                            iconColor: Colors.white,
                            iconSize: Dimensions.height10*5/2,
                            size: Dimensions.height10*5,),
-                         bigText: BigText(text: "put your msg here")
+                         bigText: BigText(text: "Log out")
                      ),
                    ),
                  ],
